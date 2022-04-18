@@ -22,7 +22,16 @@ function addTodo(e) {
     const trashButton = document.createElement('button')
     trashButton.innerText = 'delete'
     output.appendChild(trashButton)
+
+    trashButton.addEventListener('click', deleteTodo)
 }
+
+function deleteTodo(e) {
+    //delete a single todo
+    output.remove()
+}
+
+
 
 input.addEventListener('keydown', function (e) {
     if (e.keyCode == 13) {
