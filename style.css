@@ -1,0 +1,7 @@
+.outputs{
+    display: flex;
+}
+
+.outputs li{
+    list-style: none;
+}

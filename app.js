@@ -16,8 +16,17 @@ function addTodo(e) {
     //move li under newDiv
     newDiv.appendChild(newLi)
     output.appendChild(newDiv)
+    //clear input
+    input.value = ''
+    // create delet button
+    const trashButton = document.createElement('button')
+    trashButton.innerText = 'delete'
+    output.appendChild(trashButton)
 }
 
-function savetoLocal(e) {
-    
-}
+input.addEventListener('keydown', function (e) {
+    if (e.keyCode == 13) {
+        addTodo(e)
+    }
+})
+
