@@ -33,12 +33,21 @@ function addTodo(e) {
 output.addEventListener('click', deleteTodo)
 
 function deleteTodo(e) {
-    console.log("hello")
+    // target = choose which delete button is clicked
     const singleTodo = e.target
     if (singleTodo.classList[0] === 'trashBtn') {
         e.target.parentElement.remove()
     }
+
+    
+
+    if (singleTodo.classList[0] === 'checkBtn') {
+        console.log("hello")
+        e.target.parentElement.classList.add('lineThrough')
+    }
 }
+
+
 
 input.addEventListener('keydown', function (e) {
     if (e.keyCode == 13) {

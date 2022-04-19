@@ -5,3 +5,12 @@
 .outputs li{
     list-style: none;
 }
+
+body{
+    background: rgb(28, 34, 62);
+    color: #fefefe;
+}
+
+.lineThrough{
+    text-decoration-line: line-through;
+}
