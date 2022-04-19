@@ -20,22 +20,35 @@ function addTodo(e) {
     input.value = ''
     // create delet button
     const trashButton = document.createElement('button')
+    trashButton.classList.add('trashBtn')
     trashButton.innerText = 'delete'
-    output.appendChild(trashButton)
-
-    trashButton.addEventListener('click', deleteTodo)
+    newDiv.appendChild(trashButton) 
+    //create check button
+    const checkButton = document.createElement('button')
+    checkButton.classList.add('checkBtn')
+    checkButton.innerText = 'check'
+    newDiv.appendChild(checkButton)
 }
+
+output.addEventListener('click', deleteTodo)
 
 function deleteTodo(e) {
-    //delete a single todo
-    output.remove()
+    console.log("hello")
+    const singleTodo = e.target
+    if (singleTodo.classList[0] === 'trashBtn') {
+        e.target.parentElement.remove()
+    }
 }
-
-
 
 input.addEventListener('keydown', function (e) {
     if (e.keyCode == 13) {
         addTodo(e)
     }
 })
+
+
+
+
+
+
 
