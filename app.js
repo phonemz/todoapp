@@ -2,13 +2,17 @@ const input = document.querySelector('.inputs')
 const button = document.querySelector('button')
 const filter = document.querySelector('.filter')
 const output = document.querySelector('.outputs')
+const testBtn = document.querySelector('.test-btn')
 
 button.addEventListener('click', addTodo)
+
+testBtn.addEventListener('click', filterOutput)
 
 
 function addTodo(e) {
     //Adding new div
     const newDiv = document.createElement('div')
+    const divTwo = document.createElement('div')
     //Adding new li
     const newLi = document.createElement('li')
     //take the value that is added to input box
@@ -18,23 +22,27 @@ function addTodo(e) {
     output.appendChild(newDiv)
     //clear input
     input.value = ''
-    // create delet button
+    // create delete button
     const trashButton = document.createElement('button')
     trashButton.classList.add('trashBtn')
     trashButton.innerText = 'delete'
-    newDiv.appendChild(trashButton) 
+    divTwo.appendChild(trashButton) 
     //create check button
     const checkButton = document.createElement('button')
     checkButton.classList.add('checkBtn')
     checkButton.innerText = 'check'
-    newDiv.appendChild(checkButton)
+    divTwo.appendChild(checkButton)
+    //move div two under new div
+    newDiv.appendChild(divTwo)
 }
 
+//when the todo output is clicked, it will be delete, but only for the one with exact class
 output.addEventListener('click', deleteTodo)
 
 function deleteTodo(e) {
-    // target = choose which delete button is clicked
+    // target = choose which button is clicked
     const singleTodo = e.target
+    
     if (singleTodo.classList[0] === 'trashBtn') {
         e.target.parentElement.remove()
     }
@@ -43,9 +51,17 @@ function deleteTodo(e) {
 
     if (singleTodo.classList[0] === 'checkBtn') {
         console.log("hello")
-        e.target.parentElement.classList.add('lineThrough')
+        e.target.parentElement.classList.toggle('lineThrough')
     }
 }
+
+function filterOutput(e) {
+    const filterTodo = output.childNodes
+
+    
+}
+
+
 
 
 

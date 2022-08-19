@@ -1,5 +1,11 @@
 .outputs{
     display: flex;
+    flex-direction: column;
+}
+
+.outputs div{
+    display: flex;
+    justify-content: space-between;
 }
 
 .outputs li{
@@ -9,8 +15,13 @@
 body{
     background: rgb(28, 34, 62);
     color: #fefefe;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .lineThrough{
     text-decoration-line: line-through;
+    opacity: 0.5;
 }
+
