@@ -6,7 +6,7 @@ const testBtn = document.querySelector('.test-btn')
 
 button.addEventListener('click', addTodo)
 
-testBtn.addEventListener('click', filterOutput)
+// testBtn.addEventListener('click', filterOutput)
 
 
 function addTodo(e) {
@@ -15,25 +15,34 @@ function addTodo(e) {
     const divTwo = document.createElement('div')
     //Adding new li
     const newLi = document.createElement('li')
+
     //take the value that is added to input box
     newLi.innerText = input.value
+
     //move li under newDiv
     newDiv.appendChild(newLi)
     output.appendChild(newDiv)
-    //clear input
-    input.value = ''
+
     // create delete button
     const trashButton = document.createElement('button')
     trashButton.classList.add('trashBtn')
     trashButton.innerText = 'delete'
     divTwo.appendChild(trashButton) 
+
     //create check button
     const checkButton = document.createElement('button')
     checkButton.classList.add('checkBtn')
     checkButton.innerText = 'check'
     divTwo.appendChild(checkButton)
+
     //move div two under new div
     newDiv.appendChild(divTwo)
+
+    //Save local
+    saveLocalTodos()
+
+    //clear input
+    input.value = ''
 }
 
 //when the todo output is clicked, it will be delete, but only for the one with exact class
@@ -55,14 +64,20 @@ function deleteTodo(e) {
     }
 }
 
-function filterOutput(e) {
-    const filterTodo = output.childNodes
+// function filterOutput(e) {
+//     const todos = output.childNodes
+// }
 
-    
+function saveLocalTodos(todo) {
+    let todos
+    if (localStorage.getItem('todos') === null) {
+        todos = []
+    }
+    else {
+        todos = JSON.parse(localStorage.getItem('todos'))
+    }
+    localStorage.setItem('localtodo', todos)
 }
-
-
-
 
 
 input.addEventListener('keydown', function (e) {
@@ -70,6 +85,8 @@ input.addEventListener('keydown', function (e) {
         addTodo(e)
     }
 })
+
+
 
 
 
