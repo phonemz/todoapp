@@ -4,6 +4,7 @@ const filter = document.querySelector('.filter')
 const output = document.querySelector('.outputs')
 const testBtn = document.querySelector('.test-btn')
 
+
 button.addEventListener('click', addTodo)
 
 // testBtn.addEventListener('click', filterOutput)
@@ -37,9 +38,7 @@ function addTodo(e) {
 
     //move div two under new div
     newDiv.appendChild(divTwo)
-
-    //Save local
-    saveLocalTodos()
+    newDiv.classList.add('parent')
 
     //clear input
     input.value = ''
@@ -49,18 +48,20 @@ function addTodo(e) {
 output.addEventListener('click', deleteTodo)
 
 function deleteTodo(e) {
+
+    const parent = document.querySelector('.parent')
+    
     // target = choose which button is clicked
     const singleTodo = e.target
     
     if (singleTodo.classList[0] === 'trashBtn') {
-        e.target.parentElement.remove()
+        parent.remove()
     }
 
     
 
     if (singleTodo.classList[0] === 'checkBtn') {
-        console.log("hello")
-        e.target.parentElement.classList.toggle('lineThrough')
+        parent.classList.toggle('lineThrough')
     }
 }
 
@@ -68,16 +69,7 @@ function deleteTodo(e) {
 //     const todos = output.childNodes
 // }
 
-function saveLocalTodos(todo) {
-    let todos
-    if (localStorage.getItem('todos') === null) {
-        todos = []
-    }
-    else {
-        todos = JSON.parse(localStorage.getItem('todos'))
-    }
-    localStorage.setItem('localtodo', todos)
-}
+
 
 
 input.addEventListener('keydown', function (e) {
