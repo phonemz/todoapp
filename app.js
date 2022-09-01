@@ -40,6 +40,8 @@ function addTodo(e) {
     newDiv.appendChild(divTwo)
     newDiv.classList.add('parent')
 
+    saveTodo()
+
     //clear input
     input.value = ''
 }
@@ -77,6 +79,10 @@ input.addEventListener('keydown', function (e) {
         addTodo(e)
     }
 })
+
+function saveTodo() {
+    console.log(localStorage.getItem('task'))
+}
 
 
 
