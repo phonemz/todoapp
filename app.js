@@ -40,7 +40,7 @@ function addTodo(e) {
     newDiv.appendChild(divTwo)
     newDiv.classList.add('parent')
 
-    saveTodo()
+    saveTodo(input.value)
 
     //clear input
     input.value = ''
@@ -80,8 +80,16 @@ input.addEventListener('keydown', function (e) {
     }
 })
 
-function saveTodo() {
-    console.log(localStorage.getItem('task'))
+function saveTodo(todo) {
+    let task
+    if (localStorage.getItem('task') === null) {
+        task = []
+    }
+    else {
+        task = JSON.parse(localStorage.getItem('task'))
+    }
+    task.push(todo)
+    localStorage.setItem('task',JSON.stringify(task))
 }
 
 
